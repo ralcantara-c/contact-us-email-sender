@@ -1,0 +1,19 @@
+{
+  "name": "contact-us-mailer",
+  "version": "1.0.0",
+  "description": "Sends email to aws subscriber when someone contact us",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.873.0",
+    "crypto": "^1.0.1",
+    "nodemon": "^2.0.7",
+    "string": "^3.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start:test": "node test",
+    "start": "node index"
+  },
+  "author": "reymbrant.jbsa@gmail.com",
+  "license": "ISC"
+}
