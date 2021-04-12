@@ -8,7 +8,6 @@ class ContactUsMailClass {
         this.dynamodb = dynamodb;
         this.snsconfig = snsconfig;
         this.name = 'contact-us-email-sender';
-        this.correlationId = crypto.randomBytes(16).toString('hex');
     }
 
     async SendContactUsMail(event) {
