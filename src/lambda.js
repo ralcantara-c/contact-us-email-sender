@@ -6,6 +6,7 @@ const sns = new AWS.SNS({apiVersion: '2010-03-31'});
 const ContactUsMailClass = require('./contact-us-mail.js');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const config = require('./config/config');
+const sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
 module.exports.handler = async (event, context, callback) => {
     let params = event;
@@ -15,9 +16,11 @@ module.exports.handler = async (event, context, callback) => {
         params = config.getTest();
     }
 
-    const snsconfig = config.getSNSConfig();
+    let configuration = {};
+    configuration.sns = config.getSNSConfig();
+    configuration.sqs = config.getSQSConfig();
 
-    let SendContactUsMail = new ContactUsMailClass(sns, dynamodb, snsconfig);
+    let SendContactUsMail = new ContactUsMailClass(sns, dynamodb, configuration, sqs);
     let response = await SendContactUsMail.SendContactUsMail(params);
 
     return response;
