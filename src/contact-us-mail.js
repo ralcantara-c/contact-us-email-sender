@@ -95,7 +95,6 @@ class ContactUsMailClass {
 
     async sendToSQS(sqs, event, configuration, dynamodb) {
         let success = true;
-        const queueURL = "https://sqs.us-west-2.amazonaws.com/689649163853/ContactUsQueue.fifo"
 
         var params = {
             // Remove DelaySeconds parameter and value for FIFO queues
